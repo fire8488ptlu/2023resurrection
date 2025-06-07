@@ -1,0 +1,182 @@
+.home {
+    height: $default-height;
+    background-image: url("./backgroundImg/HomeMobile.jpg");
+    background-size: cover;
+    background-position: 0px 0px;
+
+    @media only screen and (min-width: 1025px) {
+        background-image: url("./backgroundImg/HomePC.jpg");
+    }
+
+}
+
+.home-container {
+    // mobile height 67rem 1:5:2:1:2:1
+    display: grid;
+    height: 100%;
+    // min-height 不能全部用fr 不然content 沒有辦法自動對焦
+    grid-template-rows: 1fr 5fr 1.5fr 1.5fr 2fr 1fr;
+    // grid-template-rows: 7rem 28rem 8rem 4rem 19rem 1rem;
+    justify-items: center;
+
+
+    &-logo {
+
+        grid-row: 1 / span 1;
+        padding: 1rem;
+        justify-self: start;
+
+        &-svg {
+            height: 4rem
+        }
+    }
+
+    &-title {
+
+        grid-row: 2 / span 1;
+        padding: 2rem;
+        align-self: center;
+        animation: fadeInOut 3.5s ease-in-out infinite;
+
+        @keyframes fadeInOut {
+            0% {
+                opacity: 0.6;
+            }
+
+            25% {
+                opacity: 0.85;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            75% {
+                opacity: 0.85;
+            }
+
+            100% {
+                opacity: 0.6;
+            }
+        }
+
+
+        &-svg {
+            height: 20rem;
+        }
+
+
+    }
+
+    &-content {
+        grid-row: 3 / span 1;
+        user-select: none;
+        font-family: 'GenYoGothicEL';
+        text-align: center;
+        color: $color-white;
+
+        &:focus,
+        &:active {
+            @include click-effect;
+        }
+    }
+
+
+    &-enter {
+        grid-row: 4 / span 1;
+        user-select: none;
+        align-self: start;
+        font-size: 1rem;
+        color: $color-white;
+
+        animation: fadeInOut 2s ease-in-out infinite;
+
+        @keyframes fadeInOut {
+            0% {
+                opacity: 0.6;
+            }
+
+            25% {
+                opacity: 0.85;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            75% {
+                opacity: 0.85;
+            }
+
+            100% {
+                opacity: 0.6;
+            }
+        }
+
+        &:focus,
+        &:active {
+            @include click-effect;
+        }
+
+    }
+
+    &-share {
+        grid-row: 5 / span 1;
+        align-self: center;
+
+
+        display: flex;
+
+
+
+        &-item {
+            // height: 5rem;
+            margin: 0 0.5rem 0 0.5rem;
+            height: 7rem;
+            width: 11rem;
+            padding: 1rem 0 0 0;
+            text-align: center;
+            background-color: rgba(255, 229, 172, 0.5);
+            box-shadow: 0 0 0px rgba(0, 0, 0, 0.5);
+            box-sizing: border-box;
+            border-radius: 20px;
+            user-select: none;
+            font-family: 'GenYoGothicEL';
+
+            &:focus,
+            &:active {
+                @include click-effect-2;
+
+            }
+
+
+
+
+            &-svg {
+                height: 3rem;
+                // height: 5rem;
+            }
+
+            &-text {
+                color: $color-white;
+            }
+
+            // width: 80%;
+        }
+
+    }
+
+    &-copyright {
+        grid-row: 6 / span 1;
+        text-transform: uppercase;
+        align-self: end;
+        user-select: none;
+        color: $color-white;
+        margin: 0 0 0.5rem 0;
+        // background-color: aliceblue;
+
+    }
+
+
+
+}

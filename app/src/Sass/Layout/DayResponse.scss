@@ -1,0 +1,288 @@
+.dayResponse {
+    background-image: url("./backgroundImg/ResponseMobile.jpg");
+    height: $default-height;
+    background-size: cover;
+    background-position: 0px 0px;
+
+    @media only screen and (min-width: 1025px) {
+        background-image: url("./backgroundImg/ResponsePC.jpg");
+    }
+
+}
+
+.dayResponse-container {
+
+    display: grid;
+    height: 100%;
+    grid-template-rows: 1fr 5fr 6fr 0.5fr;
+    justify-items: center;
+
+    &-logo {
+        grid-row: 1 / span 1;
+        padding: 1rem;
+        display: flex;
+        width: 100%;
+
+        &-svg {
+            margin-right: auto;
+            height: 4rem;
+        }
+
+        &-btnbox {
+            margin-left: auto;
+            height: 5rem;
+            transform: translate(0, 1.2rem);
+
+            &-home {
+                height: 5rem;
+
+                &:focus,
+                &:active {
+                    @include click-effect;
+                }
+            }
+        }
+    }
+
+    &-content {
+        grid-row: 2 / span 1;
+        align-self: end;
+
+        height: 80%;
+        padding: 2.5rem 0 0 0;
+        background-color: $color-grey;
+        width: 35rem;
+        border-radius: 20px;
+        text-align: center;
+        animation: scaleUp 0.5s;
+
+        @keyframes scaleUp {
+            0% {
+                transform: scale(0.7);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        &-title1 {
+            color: $color-brown-1;
+            letter-spacing: 1px;
+            font-weight: bold;
+            font-size: 1.7rem;
+
+        }
+
+        &-title2 {
+            color: $color-brown-1;
+            font-weight: bold;
+            font-size: 2rem;
+            letter-spacing: 2px;
+            transform: translate(0, -5px);
+        }
+
+        &-text {
+            color: $color-black;
+            letter-spacing: 1px;
+            text-align: start;
+            font-size: 1.3rem;
+            padding: 1.8rem 4rem 0 4rem;
+        }
+
+
+    }
+
+    &-arrowbox {
+        grid-row: 3 / span 1;
+        align-self: start;
+        width: 35rem;
+        height: 10rem;
+        padding-top: 2rem;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+
+
+        &-arrowleft {
+            height: 6rem;
+            justify-self: start;
+
+            &:focus,
+            &:active {
+                @include click-effect;
+            }
+
+        }
+
+        &-moreinfo {
+            user-select: none;
+            height: 100%;
+            width: 35%;
+            background-color: $color-grey;
+            border-radius: 20px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+
+            &:focus,
+            &:active {
+                @include click-effect-2;
+            }
+
+            &-svg {
+                height: 3rem;
+            }
+
+            // span 比較適合水平 h1 適合垂直
+            &-text {
+                font-size: 1.4rem;
+                color: $color-brown-1;
+                letter-spacing: 2px;
+            }
+        }
+
+        &-share {
+            user-select: none;
+            height: 100%;
+            width: 35%;
+            background-color: $color-grey;
+            border-radius: 20px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+
+
+
+            &-box {
+                display: flex;
+                width: 100%;
+                justify-content: center;
+                gap: 5px;
+
+                &-fb {
+                    height: 3rem;
+                    pointer-events: none;
+                    transition: all 0.75s;
+
+                    &.animate {
+                        pointer-events: auto;
+                        transform: scale(3) translate(-6rem, 5rem);
+                    }
+
+                    &.reverse {
+                        animation-direction: reverse-animation 0.5s forwards;
+                    }
+
+                    @keyframes reverse-animation {
+                        from {
+                            transform: scale(3) translate(-6rem, 5rem);
+                        }
+
+                        to {
+                            transform: scale(1) translate(0, 0);
+                        }
+                    }
+
+                    &:focus,
+                    &:active {
+                        transform: scale(3) translate(-6rem, 5rem);
+                        animation: move2 0.5s;
+
+                        @keyframes move2 {
+                            from {
+                                transform: scale(3) translate(-6rem, 5rem);
+                            }
+
+                            to {
+                                transform: scale(3) translate(-6rem, 5.5rem);
+                            }
+                        }
+                    }
+
+
+
+
+                }
+
+                &-line {
+                    height: 3rem;
+                    pointer-events: none;
+                    transition: all 0.75s;
+
+                    &.animate {
+                        pointer-events: auto;
+                        transform: scale(3) translate(-2rem, 5rem);
+                    }
+
+                    &.reverse {
+                        animation-direction: reverse-animation 0.5s forwards;
+                    }
+
+                    @keyframes reverse-animation {
+                        from {
+                            transform: scale(3) translate(-2rem, 5rem);
+                        }
+
+                        to {
+                            transform: scale(1) translate(0, 0);
+                        }
+                    }
+
+                    &:focus,
+                    &:active {
+                        transform: scale(3) translate(-2rem, 5rem);
+                        animation: move3 0.5s;
+
+                        @keyframes move3 {
+                            from {
+                                transform: scale(3) translate(-2rem, 5rem);
+                            }
+
+                            to {
+                                transform: scale(3) translate(-2rem, 5.5rem);
+                            }
+                        }
+                    }
+
+
+
+
+
+
+                }
+            }
+
+            &-text {
+                font-size: 1.4rem;
+                color: $color-brown-1;
+                letter-spacing: 2px;
+            }
+        }
+
+    }
+
+    &-copyright {
+        grid-row: 4 / span 1;
+        text-transform: uppercase;
+        align-self: end;
+        user-select: none;
+        color: $color-white;
+        margin: 0 0 0.5rem 0;
+    }
+
+
+
+}

@@ -1,0 +1,160 @@
+.board {
+    height: $default-height;
+    background-image: url("./backgroundImg/BoardMobile.jpg");
+    background-size: cover;
+    background-position: 0px 0px;
+
+    @media only screen and (min-width: 1025px) {
+        background-image: url("./backgroundImg/BoardPC.jpg");
+    }
+}
+
+.board-container {
+    display: grid;
+    height: 100%;
+    // total 12fr logo=1fr
+    grid-template-rows: 1fr 10fr 1fr 0.5fr;
+    justify-items: center;
+
+    &-logo {
+        grid-row: 1 / span 1;
+        padding: 1rem;
+
+        //flex 要搭配width:100%
+        display: flex;
+        width: 100%;
+
+        &-svg {
+            margin-right: auto;
+            height: 4rem;
+        }
+
+        &-btnbox {
+
+            margin-left: auto;
+            height: 5rem;
+            transform: translate(0, 1.2rem);
+
+            &-home {
+                height: 5rem;
+
+                &:focus,
+                &:active {
+                    @include click-effect;
+                }
+            }
+
+
+
+
+        }
+
+    }
+
+
+
+    &-model {
+        // background-color: red;
+        grid-row: 2 / span 1;
+        align-self: center;
+        // padding: 3rem;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+
+        // width: 80%;
+
+        &-item {
+
+            display: flex;
+            align-items: center;
+            user-select: none;
+
+            background-color: $color-grey;
+            border-radius: 20px;
+            height: 5rem;
+            width: 24rem;
+            animation: move 0.5s;
+
+            @keyframes move {
+                from {
+                    transform: translateY(-5rem);
+                }
+
+                to {
+                    transform: translateY(0rem);
+                }
+            }
+
+            &--clicked {
+                @include click-effect;
+            }
+
+
+
+            &--red {
+                background-color: $color-brown;
+            }
+
+            &-box {
+
+                height: 100%;
+                display: flex;
+                align-items: center;
+                margin: 0 0 0 3rem;
+
+                &--final {
+                    justify-content: center;
+                    width: 100%;
+                    margin: 0 0 0 0;
+                }
+
+                &-svg {
+                    height: 2.5rem;
+                    width: 2.5rem;
+                    margin: 0 1rem 0 0;
+                }
+
+                &-title {
+                    font-weight: 900;
+                    font-size: 1.6rem;
+                    letter-spacing: 2px;
+                    color: $color-brown-1;
+
+                    &--white {
+                        color: $color-grey;
+                    }
+                }
+            }
+
+        }
+
+
+    }
+
+    &-content {
+        grid-row: 3 / span 1;
+        align-self: center;
+        font-family: 'GenYoGothicEL';
+        text-align: center;
+
+        h3 {
+            color: white;
+        }
+    }
+
+
+    &-copyright {
+        grid-row: 4 / span 1;
+        text-transform: uppercase;
+        align-self: end;
+        user-select: none;
+        color: $color-white;
+        margin: 0 0 0.5rem 0;
+    }
+
+
+}

@@ -1,0 +1,379 @@
+.dayImg {
+    height: $default-height;
+    background-image: url("./backgroundImg/ImgMobile.jpg");
+    background-size: cover;
+    background-position: 0px 0px;
+
+    @media only screen and (min-width: 1025px) {
+        background-image: url("./backgroundImg/ImgPC.jpg");
+    }
+}
+
+.dayImg-container {
+    display: grid;
+    height: 100%;
+    // total 12fr logo=1fr
+    grid-template-rows: 1fr 8.5fr 2.5fr 0.5fr;
+    justify-items: center;
+
+    &-logo {
+        grid-row: 1 / span 1;
+        padding: 1rem;
+
+        display: flex;
+        width: 100%;
+
+        &-svg {
+            margin-right: auto;
+            height: 4rem;
+        }
+
+
+        &-btnbox {
+            margin-left: auto;
+            height: 5rem;
+            transform: translate(0, 1.2rem);
+
+            &-sound {
+                position: relative;
+                height: 5rem;
+                margin-right: 1rem;
+                transform: scale(0);
+                animation: scaleUp 0.5s ease-in-out 2.3s forwards;
+
+                @keyframes scaleUp {
+                    0% {
+                        transform: scale(0.7);
+                    }
+
+                    50% {
+                        transform: scale(1.5);
+                    }
+
+                    100% {
+                        transform: scale(1);
+                    }
+                }
+
+                &--clicked {
+
+                    position: relative;
+                    height: 5rem;
+                    margin-right: 1rem;
+
+                    &:focus,
+                    &:active {
+                        @include click-effect;
+                    }
+                }
+
+                // &:focus,
+                // &:active {
+                //     @include click-effect;
+                // }
+
+                &-promptbox {
+                    position: absolute;
+                    border-radius: 10px;
+                    top: 0.5rem;
+                    right: 12rem;
+                    width: 9rem;
+                    height: 4rem;
+                    background-color: $color-grey-1;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    transform: scale(0);
+                    animation: scaleUp 0.75s ease-in-out 2.7s forwards;
+
+                    @keyframes scaleUp {
+                        0% {
+                            transform: scale(0.7);
+                        }
+
+                        50% {
+                            transform: scale(1.5);
+                        }
+
+                        100% {
+                            transform: scale(1);
+                        }
+                    }
+                }
+
+            }
+
+            &-home {
+                height: 5rem;
+
+                &:focus,
+                &:active {
+                    @include click-effect;
+                }
+            }
+
+        }
+
+
+    }
+
+    &-content {
+        grid-row: 2 / span 1;
+        height: 100%;
+        padding: 3rem 0 0 0;
+        perspective: 100rem;
+
+
+
+        &-container {
+            position: relative;
+            transform-style: preserve-3d;
+            width: 35rem;
+            height: 41rem;
+
+
+            cursor: pointer;
+            transition: 1.6s;
+
+            &-front,
+            &-back {
+                position: absolute;
+                border-radius: 20px;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                backface-visibility: hidden;
+            }
+
+            &-front {
+                z-index: 2;
+                animation: fadeIn 1.25s;
+                // js reload 要關掉
+
+                &--disable {
+                    opacity: 0;
+                    pointer-events: none;
+                }
+
+                @keyframes fadeIn {
+                    from {
+                        transform: translateY(-5rem);
+                        opacity: 0;
+                    }
+
+                    to {
+                        transform: translateY(0rem);
+                        opacity: 1;
+                    }
+                }
+
+
+            }
+
+            &-back {
+                background-color: $color-grey;
+                transform: rotateY(-180deg);
+                padding: 2rem 4rem 3rem 4rem;
+
+                &--red {
+                    background-color: $color-brown;
+                }
+
+
+                &-title {
+
+                    display: flex;
+                    justify-content: center;
+
+                    &-svg {
+                        height: 3rem;
+                        transform: translate(-3rem, 0);
+                    }
+
+                    &-text {
+                        color: $color-brown-1;
+                        font-weight: bold;
+                        font-size: 1.7rem;
+
+                        &--red {
+                            // color: $color-grey;
+                            color: $color-gold;
+                        }
+                    }
+
+                }
+
+                &-content {
+                    padding: 1rem 0 0 0;
+                    font-size: 1.2rem;
+                    color: $color-black;
+                    line-height: 1.7rem;
+
+                    &--red {
+                        color: $color-grey;
+                    }
+                }
+
+                &-verse {
+                    font-size: 1.2rem;
+                    font-weight: bold;
+                    color: $color-black;
+
+                    &--red {
+                        color: $color-grey;
+                    }
+                }
+            }
+
+            &.clicked {
+                transform: rotateY(-180deg);
+            }
+
+        }
+
+        &-authorbox {
+            display: flex;
+            justify-content: center;
+            margin-top: 1rem;
+            animation: fadeIn 1.25s ease-in-out 1s forwards;
+            opacity: 0;
+
+            @keyframes fadeIn {
+                from {
+                    transform: translateY(-2.5rem);
+                    opacity: 0;
+                }
+
+                to {
+                    transform: translateY(0rem);
+                    opacity: 1;
+                }
+            }
+
+            &-title {
+                font-family: 'GenYoGothicEL';
+                text-align: center;
+                color: white;
+                margin-right: 3rem;
+            }
+
+            &-author {
+                font-family: 'GenYoGothicEL';
+                text-align: center;
+                color: white;
+                margin-left: 3rem;
+            }
+        }
+
+    }
+
+
+    &-arrow {
+        grid-row: 3 / span 1;
+        // align-self: start;
+        align-items: center;
+        display: flex;
+        width: 35rem;
+
+        justify-content: space-between;
+
+        &-left {
+            height: 8rem;
+            padding: 1.5rem 1rem 1rem 1rem;
+            margin-right: 1rem;
+
+            &:focus,
+            &:active {
+                @include click-effect;
+            }
+
+        }
+
+
+        &-right {
+            height: 8rem;
+            padding: 1.5rem 1rem 1rem 1rem;
+            margin-left: 1rem;
+
+            &:focus,
+            &:active {
+                @include click-effect;
+            }
+
+        }
+
+        &-btn {
+
+            display: none;
+
+            &--active {
+                user-select: none;
+                display: flex;
+                align-items: center;
+                background-color: $color-grey;
+                border-radius: 20px;
+                width: 50%;
+                height: 5.5rem;
+                justify-content: center;
+                opacity: 0;
+                animation: fadeIn 1.25s ease-in-out 1s forwards;
+
+
+                @keyframes fadeIn {
+                    from {
+                        transform: translateY(-2.5rem);
+                        opacity: 0;
+                    }
+
+                    to {
+                        transform: translateY(0rem);
+                        opacity: 1;
+                    }
+                }
+
+                // &:focus,
+                // &:active {
+                //     @include click-effect-2;
+                // }
+            }
+
+            &--clicked {
+                user-select: none;
+                display: flex;
+                align-items: center;
+                background-color: $color-grey;
+                border-radius: 20px;
+                width: 50%;
+                height: 5.5rem;
+                justify-content: center;
+                opacity: 1;
+                @include click-effect;
+            }
+
+            &-svg {
+                height: 3rem;
+            }
+
+            &-text {
+                // font-family: 'Noto Sans TC', '微軟正黑體', sans-serif;
+                color: $color-brown-1;
+                font-size: 1.5rem;
+                font-weight: bold;
+                font-family: DFKai-sb;
+                margin: 0 0 0 1.2rem;
+
+            }
+        }
+
+    }
+
+    &-copyright {
+        grid-row: 4 / span 1;
+        text-transform: uppercase;
+        align-self: end;
+        user-select: none;
+        color: $color-white;
+        margin: 0 0 0.5rem 0;
+    }
+}
